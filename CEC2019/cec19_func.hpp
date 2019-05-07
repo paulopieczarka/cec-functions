@@ -30,6 +30,8 @@ class Cec19 {
     void test_func(double *, double *, int, int, int);
     void free_func();
 
+    double eval_func(double *, int, int);
+
   private:
     double *OShift;
     double *M;

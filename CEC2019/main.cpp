@@ -55,5 +55,18 @@ int main (int argc, char *argv[]) {
 		}
 	}
 
+	// Eval function
+	double fitness;
+	x = new double[m];
+
+	std::cout << "x = [";
+	for (int i=0; i < n; i++) {
+		x[i] = rand()%100 - rand()%100;
+		std::cout << x[i] << ((i < n-1) ? ", " : "]");
+	}
+
+	fitness = cec19.eval_func(x, n, rand()%10);
+	std::cout << " => " <<  fitness << std::endl;
+
 	return 1;
 }

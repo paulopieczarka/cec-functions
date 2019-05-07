@@ -146,8 +146,14 @@ void Cec19::test_func (double *x, double *f, int nx, int mx,int func_num) {
 				break;
 		}
 	}
-
 }
+
+double Cec19::eval_func (double *x, int dimension, int func_num) {
+	double fitness;
+	this->test_func(x, &fitness, dimension, 1, func_num);
+	return fitness;
+}
+
 /* Schwefel's 1.2 */
 void Cec19::Schaffer_F7_func (double *x, double *f, int nx, double *Os, double *Mr, int s_flag, int r_flag) {
   int i;
