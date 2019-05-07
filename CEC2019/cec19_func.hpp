@@ -28,6 +28,7 @@ class Cec19 {
     void Griewank_func(double *, double *, int, double *, double *, int, int); /* Griewank's */
 
     void test_func(double *, double *, int, int, int);
+    void free_func();
 
   private:
     double *OShift;

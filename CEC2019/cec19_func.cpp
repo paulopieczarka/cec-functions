@@ -1,8 +1,16 @@
 #include "cec19_func.hpp"
 
-Cec19::Cec19 () : ini_flag(0) {}
+Cec19::Cec19 () :
+	ini_flag(0),
+	M(nullptr),
+	OShift(nullptr),
+	z(nullptr),
+	y(nullptr),
+	x_bound(nullptr)
+	{}
 
 Cec19::~Cec19 () {
+	this->free_func();
 }
 
 void Cec19::test_func (double *x, double *f, int nx, int mx,int func_num) {
@@ -17,11 +25,9 @@ void Cec19::test_func (double *x, double *f, int nx, int mx,int func_num) {
 	if (ini_flag == 0) {
 		FILE *fpt;
 		char FileName[256];
-		// free(M);
-		// free(OShift);
-		// free(y);
-		// free(z);
-		// free(x_bound);
+
+		this->free_func();
+
 		y = (double *)malloc(sizeof(double)  *  nx);
 		z = (double *)malloc(sizeof(double)  *  nx);
 		x_bound = (double *)malloc(sizeof(double)  *  nx);
@@ -578,4 +584,17 @@ void Cec19::Chebyshev_func (double *x, int D, double *f) {
 	}
 
 	f[0] += sum;
+}
+
+void Cec19::free_func () {
+	std::free(this->M);
+	std::free(this->OShift);
+	std::free(this->y);
+	std::free(this->z);
+	std::free(this->x_bound);
+	z = nullptr;
+  M = nullptr;
+  OShift = nullptr;
+  x_bound = nullptr;
+  ini_flag = 0;
 }
